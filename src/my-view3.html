@@ -1,0 +1,244 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="my-view3">
+
+  <template>
+    <style>
+        :host {
+            display: block;
+            padding: 10px;
+            background-color: var(--theme-yellow);
+        }
+
+        .wrapper-cards {
+            position: relative;
+        }
+
+        .circle {
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            line-height: 2.5em;
+            color: #555;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 16px 0;
+            color: #212121;
+        }
+
+        #cardOne {
+            position: absolute;
+            left: calc(50% - 200px);
+            z-index: 10;
+            transition: all 1s ease;
+           
+            --theme-card: {
+                width: 370px;
+                background-color: lightblue;
+            };
+        }
+
+        #cardOne:hover {
+            transform: scale(1.01);
+        }
+
+        #cardTwo:hover, #cardThree:hover {
+            transform: scale(0.91);
+        }
+
+         #cardOne img, #cardTwo img, #cardThree img {
+            width: 100%;
+            height: 100%;
+            transform: scale(1.01);
+         } 
+
+         #cardOne:hover img, #cardTwo:hover img, #cardThree:hover img {
+            width: 100%;
+            height: 100%;
+            transform: scale(1);
+         } 
+
+        #cardTwo {
+            position: absolute;
+            left: calc(50% - 430px);
+            z-index: 8;
+            transform: scale(0.9);
+            transition: ease-out 1s;
+            border: 0px;
+
+            --theme-card: {
+                width: 370px;
+            };
+        }
+
+        #cardThree {
+            position: absolute;
+            left: 50%;
+            z-index: 8;
+            transform: scale(0.9);
+            transition: ease-out 0.2s;
+
+            --theme-card: {
+                width: 370px;
+            };
+        }
+
+        #cardThree:hover {
+            transform: scale(0.91);
+        }
+
+
+        #perspective {
+            padding:20px;
+            transform: rotate(-45deg) skew(15deg, 15deg);
+            height: 300px;
+            width: 600px;
+            transition: width 2s, height 1s, background-color 2s, transform 2s;
+        }
+
+        #perspective:hover {
+            padding:20px;
+            transform: rotate(0deg) skew(0deg, 0deg);
+        }
+
+        .wrapper2 {
+            @apply(--layout-flex);
+            @apply(--layout-horizontal);
+        }
+
+        p[size="2"] {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 200px 5%;
+            height: 600px;
+            overflow: hidden;
+            display: block;
+            background-image: url('https://images.unsplash.com/photo-1467094568967-95f87ee9c873?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=51fe3b51e0512cc9fe5115040716205b');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: var(--theme-light);
+        }
+
+        .contact {
+            text-align: center;
+            padding: 200px 5%;
+            height: 600px;
+            overflow: hidden;
+            display: block;
+            background-color: var(--theme-darkest);
+            color: var(--theme-light);
+        }
+
+        .intro h1, h1 {
+            width: 60%;
+            font-family: georgia;
+            font-size: 3em;
+            line-height: 1.5em;
+            margin: 0 auto;
+            font-weight: 300;
+            color: var(--theme-light);
+        }
+
+        .page-wrapper {
+            text-align: center;
+            padding: 200px 0;
+            display: block;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-wrapper:last-child {
+            @apply(--layout-flex);
+            @apply(--layout-horizontal);
+        }
+
+        .starwars {
+            transform: rotate(-30deg) skew(16deg, 16deg);
+            height: 900px;
+            width: 570px;
+            margin: 0 auto;
+            transition: width 2s, height 1s, background-color 2s, transform 2s;
+        }
+
+    </style>
+    <div class="intro">
+        <p size="2">HI THERE</p>
+        <h1> I’m a designer currently focusing on building brands and digital products.  </h1>
+        <p>and I will have here some text and ext</p>
+    </div>
+
+    <div class="page-wrapper">
+        <p size="2">UI & UX</p>
+        <h1> Below you can see some of my latest work</h1>
+
+        <div class="wrapper-cards">
+            <theme-card id="cardOne">
+               <img src="https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg" />
+            </theme-card>
+            <theme-card id="cardTwo">
+               <img src="https://s-media-cache-ak0.pinimg.com/564x/33/6a/4c/336a4cb1c23faee07409eb44eaf1fd56.jpg" />       
+            </theme-card>
+            <theme-card id="cardThree">
+               <img src="https://s-media-cache-ak0.pinimg.com/564x/b2/53/95/b253957c784b6f7524a9b62fed5d2800.jpg" />
+            </theme-card>
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <p size="2">webdesign</p>
+        <h1> I’m a designer currently focusing on building brands and digital products.  </h1>
+        <p>and I will have here some text and ext</p>
+        <div class="wrapper2">
+            <theme-card id="perspective">
+               <img src="https://s-media-cache-ak0.pinimg.com/564x/e5/d6/6f/e5d66f1bb2bad48088301f3c9092cf0b.jpg" />       
+            </theme-card>
+            <theme-card id="perspective">
+                <img src="https://s-media-cache-ak0.pinimg.com/564x/10/78/31/107831fa6e1bab0f3f55cf9202c4d728.jpg" />       
+            </theme-card>
+            <theme-card id="perspective">
+             <img src="https://s-media-cache-ak0.pinimg.com/564x/39/9c/b6/399cb61bfd7dcd6fa950acda0c2e4e24.jpg" />       
+            </theme-card>
+            <theme-card id="perspective">
+                <img src="https://s-media-cache-ak0.pinimg.com/564x/e6/bb/9b/e6bb9bba25bc22137c21b544d7325eff.jpg" />    
+            </theme-card>
+        </div>
+    </div>
+    <div class="page-wrapper">
+     <h1> Something something</h1>
+        <p>and I will have here some text and ext</p>
+         <theme-card class="starwars">
+         <img src="https://s-media-cache-ak0.pinimg.com/564x/8b/a4/a9/8ba4a9b3b966bf65b38e29508a986868.jpg" />
+         </theme-card>
+    </div>
+
+    <div class="contact">
+        <p size="2">HI THERE</p>
+        <h1> I’m a designer currently focusing on building brands and digital products.  </h1>
+        <p>and I will have here some text and ext</p>
+        <div class="circle">1</div>
+        <div class="circle">2</div>
+        <div class="circle">3</div>
+    </div>
+    </template>
+
+    <script>
+
+        Polymer({
+
+            is: 'my-view3'
+
+        });
+
+    </script>
+
+</dom-module>
