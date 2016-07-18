@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="website-showcase">
+
+    <template>
+        <style>
+            :host {
+                display: inline-flex;
+
+                @apply(--website-showcase);
+            }
+
+            img {
+                width: 100%;
+            }
+        </style>
+
+        <img src="{{websites}}" />
+    </template>
+
+    <script>
+
+        Polymer({
+
+            is: 'website-showcase',
+
+            properties: {
+                websites: String
+            }
+
+        });
+
+    </script>
+
+</dom-module>

@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="website-showcase.html">
 
 <dom-module id="my-view2">
 
@@ -43,11 +44,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 16px 0;
         color: #212121;
       }
+
+      .wrapper-cards {
+        display: flex;
+        flex-grow: all;
+        align-content: center;
+        margin: 0 20px 20px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      theme-card {
+        display: inline-block;
+        height: 400px;
+        width: calc(100% * (1/4) - 10px - 1px);
+        flex-grow: 1;
+      }
     </style>
 
+    <div class="wrapper-cards">
+        <template is="dom-repeat" items="{{websites}}">
+            <website-showcase websites="[[item.img]]"></website-showcase>         
+        </template>
+    </div>
     <div class="card">
+
       <div class="circle">2</div>
-      <h1>View Two</h1>
+      <contact-list first-name="Purko" last-name="Kandinski"></contact-list>
       <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
       <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
     </div>
@@ -58,7 +81,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-view2'
+      is: 'my-view2',
+
+      ready: function() {
+            this.websites = [
+                {
+                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
+                },
+                {
+                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
+                },
+                {
+                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
+                }
+            ]
+        }
 
     });
 

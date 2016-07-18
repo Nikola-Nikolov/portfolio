@@ -1,0 +1,62 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/irong-flex-layout/irong-flex-layout.html">
+<link rel="import" href="website-showcase.html">
+
+<dom-module id="my-websites">
+
+    <template>
+
+        <style>
+
+            .pages  {
+                display: flex;
+            }
+
+            .pages website-showcase {
+                --website-showcase: {
+                    height: 300px;
+                    width: 150px;
+                };
+            }
+
+            .pages website-showcase ::content{
+                height: 300px;
+                width: 150px;
+            }
+
+        </style>
+
+    <div class="pages">
+        <template is="dom-repeat" items="{{websites}}">
+            <website-showcase websites="[[item.img]]"></website-showcase>         
+        </template>
+    </div>
+    
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'my-websites',
+
+      ready: function() {
+            this.websites = [
+                {
+                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
+                },
+                {
+                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
+                },
+                {
+                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
+                }
+            ]
+        }
+
+    });
+
+  </script>
+
+</dom-module>
