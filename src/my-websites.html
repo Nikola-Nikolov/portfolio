@@ -1,39 +1,157 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/irong-flex-layout/irong-flex-layout.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
 <link rel="import" href="website-showcase.html">
 
 <dom-module id="my-websites">
-
     <template>
-
         <style>
+        
+            :host {
+                display: block;
+                background-color: var(--theme-darkest);
+                color: var(--theme-lightest);
+                text-align: center;
+            }
+
 
             .pages  {
-                display: flex;
+                @apply(--layout-wrap);
+                @apply(--layout-horizontal);
+                apply(--layout-top);
+                padding: 10px;
+                max-width: 1200px;
+                width: 78%;
+                margin: 0 auto;
             }
 
             .pages website-showcase {
                 --website-showcase: {
-                    height: 300px;
-                    width: 150px;
+                    height: 100%;
+                    width: 30.333333333%;
+                    margin:10px;
+                    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1.25em 0px;
                 };
             }
 
-            .pages website-showcase ::content{
-                height: 300px;
-                width: 150px;
+
+            .page-wrapper {
+                text-align: center;
+                display: flex;
+                height: 500px;
+                max-width: 1200px;
+                width: 78%;
+                margin: 0 auto;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .description {
+                align-self: center;
+                margin: 0 40px;
+            }
+
+            .page-wrapper h1 {
+                font-family: 'Open Sans';
+                font-weight: 400;
+                letter-spacing: 0.05em;
+                font-size: 1.8em;
+                align-self: center;
+                text-transform: uppercase;
+                color: var(--theme-lighter);
+            }
+
+            h3 {
+                font-family: 'Open Sans';
+                font-weight: 400;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+
+            .wrapper-cards {
+                width: 75%;
+                margin-top: 50px;
+                position: relative;
+            }
+
+            #cardOne {
+                position: absolute;
+                left: calc(50% - 25.333%);
+                z-index: 10;
+                transition: all 1s ease;
+                transform: scale(1);
+               
+                --theme-card: {
+                    width: 33.3333%;
+                };
+            }
+
+             #cardOne img, #cardTwo img, #cardThree img {
+                width: 100%;
+                height: 100%;
+             } 
+
+             #cardOne:hover,
+             #cardTwo:hover,
+             #cardThree:hover {
+                top: 5px;
+                cursor: pointer;
+             }
+
+            #cardTwo {
+                position: absolute;
+                z-index: 8;
+                transform: scale(0.9);
+                transition: ease-out 1s;
+                border: 0px;
+
+                --theme-card: {
+                    width: 33.3333%;
+                };
+            }
+
+            #cardThree {
+                position: absolute;
+                left: 50%;
+                z-index: 8;
+                transform: scale(0.9);
+                transition: ease-out 0.2s;
+
+                --theme-card: {
+                    width: 33.3333%;
+                };
             }
 
         </style>
+        <div class="page-wrapper">
+            <div class="description">
+                <h1> Below you can see some of my latest work</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id odio vel neque vestibulum euismod. </p>
+            </div>
+            <div class="wrapper-cards">
+                <theme-card id="cardOne">
+                   <img src="theme/img/14.jpg" />
+                </theme-card>
+                <theme-card id="cardTwo">
+                  <img src="theme/img/01.jpg" />       
+                </theme-card>
+                <theme-card id="cardThree">
+                   <img src="theme/img/12.jpg" />
+                </theme-card>
+            </div>
+        </div>
 
-    <div class="pages">
-        <template is="dom-repeat" items="{{websites}}">
-            <website-showcase websites="[[item.img]]"></website-showcase>         
-        </template>
-    </div>
-    
+        <h3>Dialog layouts</h3>
 
-  </template>
+        <div class="pages">
+            <template is="dom-repeat" items="{{websites}}" >
+                <website-showcase websites="src/theme/img/[[item.img]]" ></website-showcase>         
+            </template>
+        </div>
+     
+    </template>
 
   <script>
 
@@ -44,16 +162,25 @@
       ready: function() {
             this.websites = [
                 {
-                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
-                },
-                {
-                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
-                },
-                {
-                    img: "https://s-media-cache-ak0.pinimg.com/564x/be/3b/18/be3b1868e04e5851cfbc96d15f2b9529.jpg"
+                    img: "14.jpg"
+                },{
+                    img: "01.jpg"
+                },{
+                    img: "12.jpg"
+                },{
+                    img: "08.jpg"
+                }, {
+                    img: "03.jpg"
+                }, {
+                    img: "10.jpg"
+                }, {
+                    img: "05.jpg"
+                }, {
+                    img: "02.jpg"
                 }
             ]
         }
+
 
     });
 

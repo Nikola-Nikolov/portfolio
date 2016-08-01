@@ -9,8 +9,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="website-showcase.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 
+<link rel="import" href="website-showcase.html">
 <dom-module id="my-view2">
 
   <template>
@@ -60,8 +67,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: calc(100% * (1/4) - 10px - 1px);
         flex-grow: 1;
       }
-    </style>
 
+      </style>
+  
+      <paper-button raised onclick="this.dialog.open()">plain dialog</paper-button>
+    
+
+      <paper-dialog id="dialog">
+        <h2>Dialog Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </paper-dialog>
+
+     
     <div class="wrapper-cards">
         <template is="dom-repeat" items="{{websites}}">
             <website-showcase websites="[[item.img]]"></website-showcase>         
