@@ -1,0 +1,370 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="my-home">
+
+  <template>
+    <style>
+        :host {
+            display: block;
+            background: #f7f7f7;
+        }
+
+        a,
+        a:visited {
+            color: #22a9d5;
+        }
+       
+        .name,
+        .work-title {
+            position: fixed;
+            transform: rotate(-90deg);
+            top: 50%;
+            left: -100%;
+            color: #dadada;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .work-title {
+            right: -100%;
+            left: auto;
+        }
+
+        .intro {
+            @apply(--layout-vertical);
+            @apply(--layout-center-justified);
+            @apply(--layout-center);
+
+            text-align: center;
+            padding: 5rem 5% 10rem;
+            overflow: hidden;
+            display: block;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: var(--theme-light);
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+
+        .ux-wrapper {
+            text-align: center;
+            padding-bottom: 10rem;
+            display: block;
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .page-wrapper {
+            text-align: center;
+            padding: 7rem 0;
+            display: block;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .page-wrapper h1 {
+            width: 90%;
+        }
+
+        .page-wrapper:last-child {
+            @apply(--layout-flex);
+            @apply(--layout-horizontal);
+        }
+
+        .wrapper-cards {
+            position: relative;
+            padding-top: 50px;
+            transform: scale(0.4);
+        }
+
+        #cardOne {
+            position: absolute;
+            left: calc(50% - 250px);
+            z-index: 0;
+            transition: all 1s ease;
+           
+            --theme-card: {
+                width: 500px;
+                background: var(--theme-lightest);
+            };
+        }
+
+        #cardTwo {
+            position: absolute;
+            display: block;
+            left: calc(50% - 430px);
+            z-index: 8;
+            transform: scale(0.9);
+            transition: ease-out 1s;
+            border: 0px;
+
+            --theme-card: {
+                width: 400px;
+            };
+        }
+
+        #cardThree {
+            position: absolute;
+            display: none;
+            left: 50%;
+            top: 50px;
+            z-index: 8;
+            transform: scale(0.9);
+            transition: ease-out 0.2s;
+
+            --theme-card: {
+                width: 500px;
+            };
+        }
+
+         #cardOne img, #cardTwo img, #cardThree img {
+            width: 100%;
+            height: 100%;
+         } 
+
+        #perspective {
+            max-width: 380px;
+            margin: 0 10px;
+            transition: width 0.5s, height 1s, background-color 2s, transform 0.2s;
+        }
+
+        #perspective:hover {
+            transform: rotate(0deg) skew(0deg, 0deg) scale(1.02);
+            cursor: pointer;
+        }
+
+        .website-wrapper {
+            @apply(--layout-flex);
+            @apply(--layout-vertical);
+            @apply(--layout-center);
+            margin: 20px auto 0;
+            max-width: 1600px;
+        }
+
+        .website-wrapper img {
+            height: 100%;
+            width: 100%;
+        }
+
+        h1 {
+            @apply(--theme-heading-large);
+        }
+
+        p[size="2"] {
+            @apply(--theme-text-medium);
+        }
+
+        .button,
+        a.button:visited {
+            background-color: #22a9d5;
+            color: var(--theme-lightest);
+            border-radius: var(--theme-radius-small);
+            padding: 10px 25px;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        #contact {
+            text-align: center;
+            padding: 15rem 5%;
+            overflow: hidden;
+            display: block;
+            background-color: var(--theme-darkest);
+            color: var(--theme-light);
+            margin: 0 auto;
+        }
+
+        #contact h1 {
+            max-width: 1000px;
+            margin: 0 auto;
+         }
+
+         @media (min-width: 900px) {
+            .ux-wrapper {
+                width: 40%;
+                padding-bottom: 30rem;
+            }
+
+            .website-wrapper {
+                @apply(--layout-horizontal);
+                @apply(--layout-start);
+                margin: 80px auto 0;
+            }
+
+            .intro {
+                width: 60%;
+                padding: 15rem 5%;
+            }
+
+            .page-wrapper {
+                padding: 15rem 0;
+            }
+
+            .page-wrapper h1 {
+                width: 60%;
+            }
+
+            #contact h1 {
+                width: 60%;
+            }
+
+            .wrapper-cards{
+                transform: scale(1);
+            }
+
+            .name {
+                left: 0;
+            }
+            .work-title {
+                right: 0;
+            }
+        }
+
+        #contact p, 
+        h1.contact-info {
+            color: var(--theme-lightest);
+        }
+
+        ul.socialLinks {
+            overflow: hidden;
+            list-style: none;
+            margin: 50px auto 0;
+            padding: 0;
+            width: 350px;
+        }
+        
+        .socialLinks li {
+            display:block;
+            width: 52px;
+            float: left;
+            margin: 0 10px;
+        }
+
+        .socialLinks li:first-child {
+            margin-left: 0;
+        }
+
+        .socialLinks li a,
+        .socialLinks li a:visited {
+            display:block;
+            height: 55px;
+            width: 52px;
+            overflow: hidden;
+            text-indent: 110%;
+            border-bottom: 0px;
+            outline: none;
+            background:url(theme/img/sprite.png)
+        }
+        
+        li.facebook a {
+            background-position: 1216px -117px;
+        }
+
+        li.facebook a:hover {
+            background-position:1216px -35px;
+        }
+
+        li.instagram a{
+           background-position: 929px -117px;
+        }
+
+        li.instagram a:hover {
+            background-position:929px -35px;
+        }
+
+        li.dribbble a{
+           background-position: 1001px -117px;
+        }
+        li.dribbble a:hover {
+            background-position:1001px -35px;
+        }
+
+        li.linkedIn a{
+           background-position: 856px -117px;
+        }
+
+        li.linkedIn a:hover {
+            background-position:856px -35px;
+        }
+
+        li.behance a{
+           background-position: 786px -117px;
+        }
+
+        li.behance a:hover {
+            background-position:786px -35px;
+        }
+
+    </style>
+
+    <div class="name"> Nikola Nikolaev Nikolov </div>
+    <div class="work-title"> UX, UI and Graphic designer </div>
+    <div class="intro">
+        <img src="theme/img/nikola-nikolaev-nikolov.png" />
+        <p size="2">Hi there, I am Nikola Nikolaev Nikolov</p>
+        <h1>I am a designer focused on creating digital experiences.</h1>
+    </div>
+  
+    <div class="ux-wrapper">
+        <p size="2">UI & UX</p>
+        <h1>Here you can see some of my UX/UI work</h1>
+         <a class="button" href="/uxui">Check Out</a>
+        <div class="wrapper-cards">
+            <theme-card id="cardOne">
+               <img src="theme/img/ui-05.png" />
+            </theme-card>
+            <theme-card id="cardTwo">
+               <img src="theme/img/notes.png" />       
+            </theme-card>
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <p size="2">web design</p>
+        <h1> Latest page designs. For past work check <a href="#">Behance</a></h1>
+        <a class="button" href="/websites">See More</a>
+        <div class="website-wrapper">
+            <theme-card id="perspective">
+               <a href="/websites"><img src="theme/img/14.jpg" /></a>       
+            </theme-card>
+            <theme-card id="perspective">
+                <a href="/websites"><img src="theme/img/05.jpg" /></a>
+            </theme-card>
+            <theme-card id="perspective">
+                <a href="/websites"><img src="theme/img/12.jpg" /></a>
+            </theme-card>
+            <theme-card id="perspective">
+                 <a href="/websites"><img src="theme/img/01.jpg" /></a>
+            </theme-card>
+        </div>
+    </div>
+    <div id="contact">
+        <p size="2">Contact me</p>
+        <h1 class="contact-info">For business inquaries or just to say "Hi", contact me at <a href="mailto:nick@temoto.net">nick@temoto.net</a></h1>
+        <ul class="socialLinks">
+            <li class="facebook"><a href="https://www.facebook.com/nikola.n.nikolov">facebook</a></li>
+            <li class="instagram"><a href="https://www.instagram.com/nick_temoto">Instagram</a></li>
+            <li class="dribbble"><a href="https://www.dribbble.com/temoto">Dribbble</a></li>
+            <li class="linkedIn"><a href="https://www.linkedin.com/in/temoto">LinkedIn</a></li>
+            <li class="behance"><a href="https://www.behance.net/temoto">Behance</a></li>
+        </ul>
+    </div>
+    </template>
+
+    <script>
+
+        Polymer({
+
+            is: 'my-home'
+
+        });
+
+    </script>
+
+</dom-module>

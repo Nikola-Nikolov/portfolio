@@ -1,0 +1,60 @@
+<dom-module id="variables-typography">
+    <template>
+        <style is="custom-style" include="variables-colors"></style>
+        <style is="custom-style">
+            body {
+              margin: 0;
+              font-family: 'Roboto', 'Noto', sans-serif;
+              line-height: 1.5;
+              font-size: 0.6em;
+              min-height: 100vh;
+              background-color: #f9f9f9;
+
+              @apply(--my-general-theme);
+            }
+
+            @media (min-width: 900px) {
+                body {
+                font-size: 1em;
+              }
+            }
+
+            @media (min-width: 1400px) {
+                body {
+                font-size: 0.9em;
+              }
+            }
+
+            :root {
+
+                --theme-heading-large: {
+                    font-family: 'Bree Serif', Georgia, serif;
+                    font-weight: 400;
+                    font-size: 2.8em;
+                    line-height: 1.3em;
+                    margin: 0 auto 30px; 
+                    color: var(--theme-darkest);
+                };
+
+                 --theme-heading-medium: {
+                    font-family: 'Bree Serif', Georgia, serif;
+                    font-weight: 400;
+                    font-size: 2.4em;
+                    line-height: 1.3em;
+                    margin: 0 auto 30px; 
+                    color: var(--theme-darkest);
+                };
+
+                --theme-text-medium: {
+                    font-weight: 800;
+                    font: 600 0.9em/1.6 'Open Sans', Verdana, Helvetica, sans-serif;
+                    letter-spacing: 0.03em;
+                    text-transform: uppercase;
+                    color: var(--theme-darkest);
+                };
+                
+            }
+
+        </style>
+    </template>
+</dom-module>

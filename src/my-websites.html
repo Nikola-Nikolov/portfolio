@@ -11,16 +11,16 @@
         
             :host {
                 display: block;
-                background-color: var(--theme-darkest);
-                color: var(--theme-lightest);
+                background: #f7f7f7;
+                color: #666;
                 text-align: center;
             }
 
 
             .pages  {
                 @apply(--layout-wrap);
-                @apply(--layout-horizontal);
-                apply(--layout-top);
+                @apply(--layout-top);
+                @apply(--layout-vertical);
                 padding: 10px;
                 max-width: 1200px;
                 width: 78%;
@@ -30,37 +30,39 @@
             .pages website-showcase {
                 --website-showcase: {
                     height: 100%;
-                    width: 30.333333333%;
-                    margin:10px;
-                    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1.25em 0px;
+                    width: 100%;
+                    box-shadow: var(--theme-shadow-small);
                 };
             }
 
+             .pages website-showcase:hover {
+                --website-showcase: {
+                    box-shadow: 0 0 50px 0 rgba(0,0,0,.5);
+                };
+            }
 
             .page-wrapper {
                 text-align: center;
                 display: flex;
                 height: 500px;
                 max-width: 1200px;
-                width: 78%;
                 margin: 0 auto;
                 position: relative;
                 overflow: hidden;
             }
 
             .description {
+                @apply(--theme-text-medium);
+
+                text-transform: none;
                 align-self: center;
                 margin: 0 40px;
+                max-width: 800px;
+                color: var(--theme-darkest);
             }
 
             .page-wrapper h1 {
-                font-family: 'Open Sans';
-                font-weight: 400;
-                letter-spacing: 0.05em;
-                font-size: 1.8em;
-                align-self: center;
-                text-transform: uppercase;
-                color: var(--theme-lighter);
+               @apply(--theme-heading-medium);
             }
 
             h3 {
@@ -71,9 +73,14 @@
             }
 
             .wrapper-cards {
-                width: 75%;
+                width: 100%;
                 margin-top: 50px;
                 position: relative;
+                display: none;
+            }
+
+            theme-card {
+                background: var(--theme-lightest);
             }
 
             #cardOne {
@@ -124,11 +131,41 @@
                 };
             }
 
+            a,
+            a:visited {
+                color: #22a9d5;
+            }
+
+            @media (min-width: 600px) {
+
+                .description {
+                    max-width: 1000px;
+                }
+
+                .wrapper-cards {
+                    display: block;
+                }
+
+                .page-wrapper {
+                    width: 78%;
+                }
+
+                .pages {
+                    @apply(--layout-horizontal);
+                }
+
+                .pages website-showcase {
+                    width: 30.333333333%;
+                    margin: 10px;
+                }
+
+            }
         </style>
         <div class="page-wrapper">
             <div class="description">
-                <h1> Below you can see some of my latest work</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id odio vel neque vestibulum euismod. </p>
+                <h1> Below you can see some of my latest webdesigns</h1>
+                <p>All pages are designed in order to be reused as templates for the "BUILD" system. Therefore, the page designs follow a strict predefined guideline. E.g. All pages are designed for one page websites. Furthermore, they are designed with the posibility to add or removing elements without affecting the overall look and feel of the page.</p>
+                <p>For more examples of my work check <a href="http://behance.com/temoto">Behance</a>, <a href="http://dribbble.com/temoto">Dribbble</a> and my <a href="http://temoto.net/old">old portfolio </a></p>
             </div>
             <div class="wrapper-cards">
                 <theme-card id="cardOne">
@@ -142,9 +179,6 @@
                 </theme-card>
             </div>
         </div>
-
-        <h3>Dialog layouts</h3>
-
         <div class="pages">
             <template is="dom-repeat" items="{{websites}}" >
                 <website-showcase websites="src/theme/img/[[item.img]]" ></website-showcase>         
@@ -167,10 +201,6 @@
                     img: "01.jpg"
                 },{
                     img: "12.jpg"
-                },{
-                    img: "08.jpg"
-                }, {
-                    img: "03.jpg"
                 }, {
                     img: "10.jpg"
                 }, {

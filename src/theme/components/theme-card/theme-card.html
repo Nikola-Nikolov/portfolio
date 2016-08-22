@@ -1,33 +1,33 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <dom-module id="theme-card">
 
-  <template>
-    <style>
-      :host {
-        box-shadow: var(--theme-medium-shadow);
-        margin: 24px;
-        background-color: #fff;
-        color: #757575;
-        display: block;
-        overflow: hidden;
-        border-radius: var(--theme-radius-small);
+    <template>
+        <style>
+            :host {
+                box-shadow: var(--theme-shadow-large);
+               
+                margin: 24px;
+                color: #757575;
+                display: block;
+                overflow: hidden;
+                border-radius: var(--theme-radius-small);
 
-        @apply(--theme-card);
-      }
-    </style>
+                @apply(--theme-card);
+            }
+        </style>
 
-    <content></content>
-  
-  </template>
+        <content></content>
+    
+    </template>
 
-  <script>
+    <script>
 
-    Polymer({
+        Polymer({
 
-      is: 'theme-card'
+            is: 'theme-card'
 
-    });
+        });
 
-  </script>
+    </script>
 
 </dom-module>

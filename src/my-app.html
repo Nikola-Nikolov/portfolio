@@ -7,6 +7,9 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
+<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
@@ -27,6 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="theme/styles/variables/variables-colors.html">
 <link rel="import" href="theme/styles/variables/variables-shadows.html">
 <link rel="import" href="theme/styles/variables/variables-borders.html">
+<link rel="import" href="theme/styles/variables/variables-typography.html">
 
 
 
@@ -36,6 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style is="custom-style" include="variables-colors"></style>
     <style is="custom-style" include="variables-shadows"></style>
     <style is="custom-style" include="variables-borders"></style>
+    <style is="custom-style" include="variables-typography"></style>
     <style>
 
       :host {
@@ -48,11 +53,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /*background: linear-gradient(#30386f, #82619b, #db98b3);*/
         background-color: var(--theme-lightest);
         color: #d4d2d6;
-        box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.5);
+        /*box-shadow: 1px 1px 7px 2px rgba(0,0,0,0.5);*/
       }
 
-      div[title] {
-        letter-spacing: -5px;
+      a,
+      a:visited {
+          color: #22a9d5;
       }
 
       app-header paper-icon-button {
@@ -60,8 +66,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .drawer-list {
-        margin: 20px;
         @apply(--layout-horizontal);
+  
+        margin: 20px 0;
+        text-align: center;
+        
       }
       .drawer-list a {
         display: block;
@@ -91,26 +100,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-drawer-layout fullbleed>
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
-
-
+      
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>NNN</div>
             <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                <a name="view1" href="/view1">View One</a>
-                <a name="view2" href="/view2">View Two</a>
-                <a name="view3" href="/view3">View Three</a>
+                <a name="home" href="/home">Home</a>
                 <a name="websites" href="/websites">Websites</a>
+                <a name="uxui" href="/uxui">UX &amp; UI</a>
             </iron-selector>
           </app-toolbar>
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-view1 name="view1" first-name="toli"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
+          <my-home name="home"></my-home>
           <my-websites name="websites"></my-websites>
+          <my-uxui name="uxui"></my-uxui>
         </iron-pages>
 
       </app-header-layout>
@@ -139,7 +144,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'home';
       },
 
       _pageChanged: function(page) {

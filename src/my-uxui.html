@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="website-showcase.html">
+
+<dom-module id="my-uxui">
+    <template>
+        <style>
+        
+            :host {
+                display: block;
+                background: #f7f7f7;
+                color: #666;
+                text-align: center;
+                background-image: url(theme/img/builder.png);
+                min-height: 100vh;
+            }
+
+
+            .pages  {
+                @apply(--layout-wrap);
+                @apply(--layout-horizontal);
+                apply(--layout-top);
+                padding: 10px;
+                max-width: 1200px;
+                width: 78%;
+                margin: 0 auto;
+            }
+
+            .page-wrapper {
+                padding-top: calc(50vh - 250px);
+            }
+
+            h1 {
+                 @apply(--theme-heading-large);
+                 color: var(--theme-lightest);  
+                 max-width: 60%;
+            }
+
+            p[size="2"] {
+                font-size: 12px;
+                font-weight: 800;
+                font: 600 15px/1.6 'Open Sans', Verdana, Helvetica, sans-serif;
+                letter-spacing: 0.03em;
+                text-transform: uppercase;
+                color: var(--theme-lightest);
+            }
+
+            a,
+            a:visited {
+                color: #22a9d5;
+            }
+        </style>
+        <div class="page-wrapper">
+            <div class="intro">
+                <p size="2">Coming soon</p>
+                <h1>Check out samples of my UX/UI work on <a href="https://dribbble.com/temoto">Dribbble</a> </h1>
+            </div>
+        </div>
+     
+    </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'my-uxui'
+
+    });
+
+  </script>
+
+</dom-module>
